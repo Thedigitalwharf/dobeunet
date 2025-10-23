@@ -62,7 +62,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-32 bg-gradient-to-b from-background via-accent/5 to-background relative overflow-hidden">
+    <section id="about" className="py-32 bg-gradient-to-b from-background via-accent/5 to-background relative overflow-hidden" aria-labelledby="about-heading">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-primary blur-3xl" />
@@ -77,7 +77,7 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 id="about-heading" className="text-4xl md:text-6xl font-bold mb-6">
             About <span className="gradient-text">Dobeu Tech Solutions</span>
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">

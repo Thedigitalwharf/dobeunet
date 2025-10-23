@@ -4,7 +4,10 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center pt-20 pb-32">
+    <section
+      className="relative overflow-hidden min-h-screen flex items-center pt-20 pb-32"
+      aria-labelledby="hero-heading"
+    >
       {/* Animated Background Gradients */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-background via-accent/20 to-background">
         <motion.div
@@ -78,7 +81,7 @@ const Hero = () => {
               </span>
             </motion.div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight mb-8 leading-[0.95]">
+            <h1 id="hero-heading" className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight mb-8 leading-[0.95]">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
