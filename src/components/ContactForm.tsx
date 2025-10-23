@@ -31,7 +31,7 @@ const ContactForm = () => {
 
       toast({
         title: "Message Sent!",
-        description: "Thank you for your message. I'll respond within 24 hours.",
+        description: "Thank you for your message. Our team will respond within 24 hours.",
       });
 
       setFormData({
@@ -66,7 +66,7 @@ const ContactForm = () => {
             Get in <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Have a question or want to discuss a project? Send me a message and I'll 
+            Have a question or want to discuss a project? Send us a message and our team will
             respond within 24 hours.
           </p>
         </motion.div>
@@ -123,7 +123,7 @@ const ContactForm = () => {
                   <div>
                     <label className="text-sm font-medium mb-2 block">Message *</label>
                     <Textarea
-                      placeholder="Tell me about your project, questions, or how I can help..."
+                      placeholder="Tell us about your project, questions, or how we can help..."
                       value={formData.message}
                       onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                       rows={6}
@@ -144,7 +144,7 @@ const ContactForm = () => {
                   <div className="text-center">
                     <p className="text-xs text-muted-foreground">
                       <MessageSquare className="inline h-3 w-3 mr-1" />
-                      I'll respond to your message within 24 hours.
+                      Our team will respond to your message within 24 hours.
                     </p>
                   </div>
                 </form>

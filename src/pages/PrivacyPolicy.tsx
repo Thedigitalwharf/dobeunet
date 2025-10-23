@@ -103,9 +103,10 @@ const PrivacyPolicy = () => {
               <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
               <p>If you have any questions about this privacy policy or our data practices, please contact us at:</p>
               <p className="mt-4">
-                <strong>Jeremy Williams</strong><br />
-                Email: jeremy@dobeu.net<br />
-                Phone: +1 (555) 123-4567
+                <strong>Dobeu Tech Solutions</strong><br />
+                Email: contact@dobeutech.com<br />
+                Phone: (215) 370-5332<br />
+                Address: Neptune, NJ 07753
               </p>
             </section>
           </div>

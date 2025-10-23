@@ -82,10 +82,10 @@ const Header = () => {
 
   const navItems = [
     { id: "about", label: "About", ariaLabel: "Learn about Dobeu Tech Solutions" },
-    { id: "expertise", label: "Services", ariaLabel: "View our IT services" },
-    { id: "pricing", label: "Pricing", ariaLabel: "See our flexible pricing models" },
-    { id: "contact", label: "Contact", ariaLabel: "Contact us for inquiries" },
-    { id: "booking", label: "Book Consultation", ariaLabel: "Schedule a free consultation", isPrimary: true },
+    { id: "expertise", label: "Services", ariaLabel: "View our enterprise IT services" },
+    { id: "pricing", label: "Pricing", ariaLabel: "Explore our flexible engagement models" },
+    { id: "contact", label: "Contact", ariaLabel: "Get in touch with our team" },
+    { id: "booking", label: "Book Consultation", ariaLabel: "Schedule a complimentary consultation", isPrimary: true },
   ];
 
   const sectionIds = navItems.map(item => item.id);
@@ -105,12 +105,15 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-3 cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center" role="img" aria-label="Dobeu Tech Solutions logo">
-              <span className="text-white font-bold text-lg">D</span>
-            </div>
-            <span className="font-bold text-xl gradient-text">Dobeu Tech Solutions</span>
+            <img
+              src="/images/logos/2025-10-11- Dobeu Logo Icon transpbck.svg"
+              alt="Dobeu Tech Solutions"
+              className="h-10 w-10"
+            />
+            <span className="font-bold text-xl gradient-text hidden sm:block">Dobeu Tech Solutions</span>
           </motion.div>
 
           <nav className="hidden md:flex items-center space-x-1" aria-label="Main navigation">

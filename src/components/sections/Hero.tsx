@@ -74,7 +74,7 @@ const Hero = () => {
             >
               <Sparkles className="h-4 w-4 text-primary group-hover:rotate-12 transition-transform duration-300" />
               <span className="text-sm font-medium text-foreground">
-                15+ Years of Innovation
+                Trusted by Fortune 500 Companies
               </span>
             </motion.div>
 
@@ -106,11 +106,11 @@ const Hero = () => {
             className="max-w-3xl"
           >
             <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6 leading-relaxed font-light">
-              Supply chain expertise meets cutting-edge technology consulting.
+              Enterprise-grade IT infrastructure, supply chain optimization, and strategic technology consulting.
             </p>
 
             <p className="text-base sm:text-lg text-muted-foreground/80 mb-10 leading-relaxed">
-              Pause or cancel anytime.
+              Flexible engagement models. Pause or cancel anytime.
             </p>
 
             <motion.div
@@ -173,8 +173,8 @@ const Hero = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-foreground">Consult</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Schedule a consultation & discuss your tech, supply chain, or
-                  branding needs.
+                  Schedule a consultation with our expert team to discuss your technology,
+                  supply chain, or digital transformation needs.
                 </p>
               </motion.div>
 
@@ -189,8 +189,8 @@ const Hero = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-foreground">Request</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Request solutions from supply chain optimization to custom
-                  software development.
+                  Request comprehensive solutions from supply chain optimization to custom
+                  enterprise software development and IT infrastructure.
                 </p>
               </motion.div>
 
@@ -205,8 +205,8 @@ const Hero = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-foreground">Receive</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Get professional solutions delivered with precision and
-                  expertise.
+                  Receive enterprise-grade solutions delivered with precision,
+                  expertise, and ongoing support from our dedicated team.
                 </p>
               </motion.div>
             </div>

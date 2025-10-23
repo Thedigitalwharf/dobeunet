@@ -39,28 +39,28 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      href: "https://linkedin.com/in/jswilliamstu",
+      href: "https://linkedin.com/company/dobeu-tech-solutions",
       icon: Linkedin,
       label: "LinkedIn",
-      description: "Professional networking"
+      description: "Connect with our team"
     },
     {
-      href: "https://github.com/jeremyw-dobeu",
+      href: "https://github.com/dobeu-tech",
       icon: Github,
       label: "GitHub",
-      description: "Code repositories"
+      description: "Open source projects"
     },
     {
       href: "https://behance.net/dobeudesigns",
       icon: ExternalLink,
       label: "Behance",
-      description: "Design portfolio"
+      description: "Design showcase"
     },
     {
       href: "https://digitalwharf.dobeu.net/subscribe",
       icon: ExternalLink,
       label: "The Digital Wharf",
-      description: "Medium publication"
+      description: "Industry insights"
     }
   ];
 
@@ -76,19 +76,21 @@ const Footer = () => {
             className="lg:col-span-2"
           >
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center" role="img" aria-label="Jeremy Williams logo">
-                <span className="text-white font-bold">JW</span>
-              </div>
+              <img
+                src="/images/logos/2025-10-11- Dobeu Logo Icon transpbck.svg"
+                alt="Dobeu Tech Solutions"
+                className="h-12 w-12"
+              />
               <div>
-                <h3 className="font-bold text-lg gradient-text">Jeremy Williams</h3>
-                <p className="text-sm text-muted-foreground">IT Solutions for Small Businesses</p>
+                <h3 className="font-bold text-lg gradient-text">Dobeu Tech Solutions</h3>
+                <p className="text-sm text-muted-foreground">Enterprise IT Solutions & Strategic Consulting</p>
               </div>
             </div>
 
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Budget-friendly IT solutions for small and medium businesses. Creative problem-solving,
-              open source expertise, and flexible pricing models. 100% satisfaction guarantee with
-              free trial work available.
+              Dobeu Tech Solutions delivers comprehensive IT infrastructure, supply chain optimization,
+              and technology consulting services. We partner with businesses to drive digital transformation
+              with flexible engagement models and a 100% satisfaction guarantee.
             </p>
 
             <div className="space-y-3">
@@ -104,8 +106,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
-                <a href="mailto:jswilliamstu@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  jswilliamstu@gmail.com
+                <a href="mailto:contact@dobeutech.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  contact@dobeutech.com
                 </a>
               </div>
             </div>
@@ -163,7 +165,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="py-6"
         >
-          <h4 className="font-semibold mb-6 text-center">Connect With Me</h4>
+          <h4 className="font-semibold mb-6 text-center">Connect With Us</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {socialLinks.map((social, index) => {
               const IconComponent = social.icon;
@@ -197,10 +199,10 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center py-6 gap-4">
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Jeremy Williams. All rights reserved.
+              © {new Date().getFullYear()} Dobeu Tech Solutions. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Built with React, TypeScript, and Supabase
+              Powered by cutting-edge technology and innovative solutions
             </p>
             <div className="flex gap-4 mt-2 justify-center md:justify-start">
               {legalLinks.map((link, index) => (

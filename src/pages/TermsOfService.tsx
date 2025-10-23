@@ -24,7 +24,7 @@ const TermsOfService = () => {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">Service Description</h2>
-              <p>Jeremy Williams provides professional consulting services in:</p>
+              <p>Dobeu Tech Solutions provides professional consulting services in:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Supply chain operations management</li>
                 <li>Technology consulting and implementation</li>
@@ -64,7 +64,7 @@ const TermsOfService = () => {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">Disclaimer</h2>
-              <p>The materials on this website are provided on an 'as is' basis. Jeremy Williams makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+              <p>The materials on this website are provided on an 'as is' basis. Dobeu Tech Solutions makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
             </section>
 
             <section>
@@ -74,22 +74,22 @@ const TermsOfService = () => {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">Limitations</h2>
-              <p>In no event shall Jeremy Williams or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on this website or consulting services, even if Jeremy Williams or authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
+              <p>In no event shall Dobeu Tech Solutions or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on this website or consulting services, even if Dobeu Tech Solutions or authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">Accuracy of Materials</h2>
-              <p>The materials appearing on this website could include technical, typographical, or photographic errors. Jeremy Williams does not warrant that any of the materials on its website are accurate, complete, or current. Jeremy Williams may make changes to the materials contained on its website at any time without notice.</p>
+              <p>The materials appearing on this website could include technical, typographical, or photographic errors. Dobeu Tech Solutions does not warrant that any of the materials on its website are accurate, complete, or current. Dobeu Tech Solutions may make changes to the materials contained on its website at any time without notice.</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">Links</h2>
-              <p>Jeremy Williams has not reviewed all of the sites linked to our website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Jeremy Williams of the site. Use of any such linked website is at the user's own risk.</p>
+              <p>Dobeu Tech Solutions has not reviewed all of the sites linked to our website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Dobeu Tech Solutions of the site. Use of any such linked website is at the user's own risk.</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">Modifications</h2>
-              <p>Jeremy Williams may revise these terms of service for its website at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
+              <p>Dobeu Tech Solutions may revise these terms of service for its website at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
             </section>
 
             <section>
@@ -106,9 +106,10 @@ const TermsOfService = () => {
               <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
               <p>If you have any questions about these Terms of Service, please contact us at:</p>
               <p className="mt-4">
-                <strong>Jeremy Williams</strong><br />
-                Email: jeremy@dobeu.net<br />
-                Phone: +1 (555) 123-4567
+                <strong>Dobeu Tech Solutions</strong><br />
+                Email: contact@dobeutech.com<br />
+                Phone: (215) 370-5332<br />
+                Address: Neptune, NJ 07753
               </p>
             </section>
           </div>

@@ -92,9 +92,9 @@ const Newsletter = () => {
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Join The Digital Wharf newsletter for exclusive insights on supply chain innovation, 
-            emerging technologies, and strategic business growth. Get monthly expert analysis 
-            delivered straight to your inbox.
+            Join The Digital Wharf newsletter for exclusive insights on supply chain innovation,
+            emerging technologies, and strategic business growth from the Dobeu Tech Solutions team.
+            Get monthly expert analysis delivered straight to your inbox.
           </p>
 
           <div className="flex justify-center gap-4 mb-12">
