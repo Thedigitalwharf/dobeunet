@@ -4,8 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
-import { AuthProvider } from "@/contexts/AuthContext";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
+import { IntercomChat } from "@/components/IntercomChat";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import AdminLogin from "./pages/AdminLogin";
@@ -17,30 +18,41 @@ import SecurityTest from "./components/SecurityTest";
 
 const queryClient = new QueryClient();
 
+function AppContent() {
+  const { user } = useAuth();
+
+  return (
+    <>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <PWAInstallPrompt />
+        <IntercomChat user={user} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/admin-dash" element={<AdminDashboard />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/TOS" element={<TermsOfService />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <SecurityTest />
+        </BrowserRouter>
+      </TooltipProvider>
+    </>
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <AuthProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <PWAInstallPrompt />
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/auth" element={<Auth />} />
-                <Route path="/admin" element={<AdminLogin />} />
-                <Route path="/admin-login" element={<AdminLogin />} />
-                <Route path="/admin-dashboard" element={<AdminDashboard />} />
-                <Route path="/admin-dash" element={<AdminDashboard />} />
-                <Route path="/privacy" element={<PrivacyPolicy />} />
-                <Route path="/TOS" element={<TermsOfService />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-              <SecurityTest />
-            </BrowserRouter>
-          </TooltipProvider>
+          <AppContent />
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
