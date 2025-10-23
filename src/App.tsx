@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
-import { IntercomChat } from "@/components/IntercomChat";
+import { IntercomManager } from "@/components/IntercomManager";
+import { CookieConsent } from "@/components/CookieConsent";
+import { WelcomeLightbox } from "@/components/WelcomeLightbox";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import AdminLogin from "./pages/AdminLogin";
@@ -26,8 +28,10 @@ function AppContent() {
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <CookieConsent />
+        <WelcomeLightbox />
         <PWAInstallPrompt />
-        <IntercomChat user={user} />
+        <IntercomManager user={user} />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
@@ -38,6 +42,7 @@ function AppContent() {
             <Route path="/admin-dash" element={<AdminDashboard />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/TOS" element={<TermsOfService />} />
+            <Route path="/tos" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <SecurityTest />

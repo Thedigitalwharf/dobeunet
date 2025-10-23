@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { user, signOut } = useAuth();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -33,6 +34,15 @@ const Header = () => {
       setIsMenuOpen(false);
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -86,22 +96,23 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className="sticky top-0 z-50 glass-strong border-b border-border/30"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'glass-strong border-b border-border/30 shadow-lg' : 'bg-background/80 backdrop-blur-sm'
+      }`}
+      role="banner"
     >
       <div className="container-max section-padding">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-3"
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center" role="img" aria-label="Dobeu Tech Solutions logo">
               <span className="text-white font-bold text-lg">D</span>
             </div>
             <span className="font-bold text-xl gradient-text">Dobeu Tech Solutions</span>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1" aria-label="Main navigation">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
@@ -147,16 +158,15 @@ const Header = () => {
             })}
           </nav>
 
-          {/* Desktop Auth & Theme */}
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            
+
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-10 w-10 rounded-full hover:glass-subtle transition-all duration-300">
+                  <Button variant="ghost" className="relative h-10 w-10 rounded-full hover:glass-subtle transition-all duration-300" aria-label="User menu">
                     <Avatar className="h-10 w-10">
-                      <AvatarImage src={user.user_metadata?.avatar_url} alt={user.email} />
+                      <AvatarImage src={user.user_metadata?.avatar_url} alt={`${user.email} avatar`} />
                       <AvatarFallback>
                         {user.email?.charAt(0).toUpperCase()}
                       </AvatarFallback>
@@ -170,7 +180,7 @@ const Header = () => {
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleSignOut}>
-                    <LogOut className="mr-2 h-4 w-4" />
+                    <LogOut className="mr-2 h-4 w-4" aria-hidden="true" />
                     <span>Sign out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -178,13 +188,12 @@ const Header = () => {
             ) : (
               <Link to="/auth">
                 <Button variant="outline" size="sm" className="glass-card border-border/50 hover:border-primary/30">
-                  <User className="mr-2 h-4 w-4" />
+                  <User className="mr-2 h-4 w-4" aria-hidden="true" />
                   Sign In
                 </Button>
               </Link>
             )}
 
-            {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="icon"
@@ -194,12 +203,11 @@ const Header = () => {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <motion.div
             ref={mobileMenuRef}
@@ -262,7 +270,7 @@ const Header = () => {
                 <div className="space-y-4 px-4">
                   <div className="flex items-center gap-3 px-4 py-3 glass-subtle rounded-xl">
                     <Avatar className="h-10 w-10">
-                      <AvatarImage src={user.user_metadata?.avatar_url} alt={user.email || 'User avatar'} />
+                      <AvatarImage src={user.user_metadata?.avatar_url} alt={`${user.email} avatar`} />
                       <AvatarFallback>
                         {user.email?.charAt(0).toUpperCase()}
                       </AvatarFallback>
@@ -278,7 +286,7 @@ const Header = () => {
                     className="w-full h-12 glass-card border-border/50 hover:border-primary/30"
                     aria-label="Sign out of your account"
                   >
-                    <LogOut className="mr-2 h-4 w-4" />
+                    <LogOut className="mr-2 h-4 w-4" aria-hidden="true" />
                     Sign Out
                   </Button>
                 </div>
@@ -290,7 +298,7 @@ const Header = () => {
                       className="w-full h-12 glass-card border-border/50 hover:border-primary/30"
                       aria-label="Sign in to your account"
                     >
-                      <User className="mr-2 h-4 w-4" />
+                      <User className="mr-2 h-4 w-4" aria-hidden="true" />
                       Sign In
                     </Button>
                   </Link>

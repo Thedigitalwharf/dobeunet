@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Link } from "react-router-dom";
-import {
-  Linkedin,
-  Github,
-  Mail,
-  MapPin,
+import { 
+  Linkedin, 
+  Github, 
+  Mail, 
+  MapPin, 
   Phone,
   ExternalLink,
   ArrowUp
@@ -23,11 +22,6 @@ const Footer = () => {
     { href: "#pricing", label: "Pricing" },
     { href: "#newsletter", label: "Newsletter" },
     { href: "#booking", label: "Book Consultation" }
-  ];
-
-  const legalLinks = [
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/tos", label: "Terms of Service" }
   ];
 
   const consultationTypes = [
@@ -65,9 +59,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-muted/30 border-t border-border" role="contentinfo">
+    <footer className="bg-muted/30 border-t border-border">
       <div className="container-max section-padding">
+        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12">
+          {/* About Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +72,7 @@ const Footer = () => {
             className="lg:col-span-2"
           >
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center" role="img" aria-label="Jeremy Williams logo">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold">JW</span>
               </div>
               <div>
@@ -84,33 +80,31 @@ const Footer = () => {
                 <p className="text-sm text-muted-foreground">IT Solutions for Small Businesses</p>
               </div>
             </div>
-
+            
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Budget-friendly IT solutions for small and medium businesses. Creative problem-solving,
               open source expertise, and flexible pricing models. 100% satisfaction guarantee with
               free trial work available.
             </p>
 
+            {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
-                <MapPin className="h-4 w-4 text-primary" aria-hidden="true" />
+                <MapPin className="h-4 w-4 text-primary" />
                 <span className="text-muted-foreground">Neptune, NJ 07753</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
-                <a href="tel:+12153705332" className="text-muted-foreground hover:text-primary transition-colors">
-                  (215) 370-5332
-                </a>
+                <Phone className="h-4 w-4 text-primary" />
+                <span className="text-muted-foreground">(215) 370-5332</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
-                <a href="mailto:jswilliamstu@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  jswilliamstu@gmail.com
-                </a>
+                <Mail className="h-4 w-4 text-primary" />
+                <span className="text-muted-foreground">jswilliamstu@gmail.com</span>
               </div>
             </div>
           </motion.div>
 
+          {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -121,7 +115,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
+                  <a 
                     href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
@@ -132,6 +126,7 @@ const Footer = () => {
             </ul>
           </motion.div>
 
+          {/* Services */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -142,7 +137,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {consultationTypes.map((service, index) => (
                 <li key={index}>
-                  <a
+                  <a 
                     href={service.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
@@ -156,6 +151,7 @@ const Footer = () => {
 
         <Separator className="my-8" />
 
+        {/* Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -174,9 +170,8 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/50 transition-all duration-300"
-                  aria-label={`Visit ${social.label} profile`}
                 >
-                  <IconComponent className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
+                  <IconComponent className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-sm group-hover:text-primary transition-colors">
                       {social.label}
@@ -185,7 +180,7 @@ const Footer = () => {
                       {social.description}
                     </p>
                   </div>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" aria-hidden="true" />
+                  <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
               );
             })}
@@ -194,6 +189,7 @@ const Footer = () => {
 
         <Separator className="my-8" />
 
+        {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center py-6 gap-4">
           <div className="text-center md:text-left">
             <p className="text-sm text-muted-foreground">
@@ -202,17 +198,6 @@ const Footer = () => {
             <p className="text-xs text-muted-foreground mt-1">
               Built with React, TypeScript, and Supabase
             </p>
-            <div className="flex gap-4 mt-2 justify-center md:justify-start">
-              {legalLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  to={link.href}
-                  className="text-xs text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
           </div>
 
           <div className="flex items-center gap-4">
@@ -221,10 +206,9 @@ const Footer = () => {
               size="sm"
               onClick={scrollToTop}
               className="group"
-              aria-label="Scroll back to top of page"
             >
               Back to Top
-              <ArrowUp className="ml-2 h-4 w-4 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
+              <ArrowUp className="ml-2 h-4 w-4 group-hover:-translate-y-1 transition-transform" />
             </Button>
           </div>
         </div>
