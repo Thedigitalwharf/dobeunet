@@ -32,24 +32,12 @@ export const useAnalytics = (user: User | null) => {
     if (!sessionId.current) return;
 
     try {
-      const event: AnalyticsEvent = {
-        event_type: eventType,
-        page_url: window.location.pathname,
-        user_id: user?.id,
-        session_id: sessionId.current,
-        properties: {
-          ...properties,
-          timestamp: new Date().toISOString(),
-          screen_resolution: `${screen.width}x${screen.height}`,
-          viewport: `${window.innerWidth}x${window.innerHeight}`,
-          language: navigator.language,
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-        }
-      };
-
-      await supabase.functions.invoke('track-analytics', {
-        body: event
-      });
+      // Log to console in development for debugging
+      if (import.meta.env.DEV) {
+        console.log('[Analytics Event]', eventType, properties);
+      }
+      // Analytics edge function disabled - can be re-enabled when needed
+      // await supabase.functions.invoke('track-analytics', { body: event });
     } catch (error) {
       // Silently fail - analytics shouldn't break the app
     }
@@ -60,43 +48,22 @@ export const useAnalytics = (user: User | null) => {
 
     const currentUrl = url || window.location.pathname;
     const now = Date.now();
-    
+
     // Track time on previous page
     if (lastPageUrl.current && lastPageUrl.current !== currentUrl) {
       const timeOnPage = now - pageStartTime.current;
-      
-      try {
-        const previousPageView: PageView = {
-          page_url: lastPageUrl.current,
-          user_id: user?.id,
-          session_id: sessionId.current,
-          referrer: document.referrer || undefined,
-          time_on_page: Math.round(timeOnPage / 1000) // Convert to seconds
-        };
 
-        await supabase.functions.invoke('track-analytics', {
-          body: previousPageView
-        });
-      } catch (error) {
-        // Silently fail - analytics shouldn't break the app
+      if (import.meta.env.DEV) {
+        console.log('[Analytics Page View]', lastPageUrl.current, 'Time:', Math.round(timeOnPage / 1000), 's');
       }
+      // Analytics edge function disabled - can be re-enabled when needed
     }
 
     // Track new page view
-    try {
-      const pageView: PageView = {
-        page_url: currentUrl,
-        user_id: user?.id,
-        session_id: sessionId.current,
-        referrer: document.referrer || undefined
-      };
-
-      await supabase.functions.invoke('track-analytics', {
-        body: pageView
-      });
-    } catch (error) {
-      // Silently fail - analytics shouldn't break the app
+    if (import.meta.env.DEV) {
+      console.log('[Analytics Page View]', currentUrl);
     }
+    // Analytics edge function disabled - can be re-enabled when needed
 
     lastPageUrl.current = currentUrl;
     pageStartTime.current = now;
