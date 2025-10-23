@@ -51,7 +51,7 @@ export const useAnalytics = (user: User | null) => {
         body: event
       });
     } catch (error) {
-      console.error('Analytics tracking error:', error);
+      // Silently fail - analytics shouldn't break the app
     }
   };
 
@@ -78,7 +78,7 @@ export const useAnalytics = (user: User | null) => {
           body: previousPageView
         });
       } catch (error) {
-        console.error('Previous page view tracking error:', error);
+        // Silently fail - analytics shouldn't break the app
       }
     }
 
@@ -95,7 +95,7 @@ export const useAnalytics = (user: User | null) => {
         body: pageView
       });
     } catch (error) {
-      console.error('Page view tracking error:', error);
+      // Silently fail - analytics shouldn't break the app
     }
 
     lastPageUrl.current = currentUrl;
