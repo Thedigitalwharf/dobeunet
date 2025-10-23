@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Intercom from "@intercom/messenger-js-sdk";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -20,6 +21,18 @@ const Index = () => {
   useEffect(() => {
     trackEvent('page_view', { page: 'home' });
   }, [trackEvent]);
+
+  // Initialize Intercom
+  useEffect(() => {
+    Intercom({
+      app_id: 'xu0gfiqb',
+      ...(user && {
+        user_id: user.id,
+        email: user.email,
+        name: user.user_metadata?.full_name || user.email,
+      }),
+    });
+  }, [user]);
 
   return (
     <div className="min-h-screen bg-background">
