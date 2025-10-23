@@ -169,3 +169,99 @@ When adding shadcn/ui components, they are automatically configured to use:
 - Use React Query for data fetching (not raw fetch/axios in components)
 - Maintain the provider hierarchy when adding new global state
 - Set up auth listener BEFORE checking session to avoid race conditions
+
+## Production Deployment
+
+### Critical Issues to Address Before Production
+This codebase has undergone comprehensive production readiness analysis. See `PRODUCTION_READINESS_REPORT.md` for full details.
+
+**Known Critical Issues:**
+1. **Hardcoded Supabase URL** in `src/pages/AdminDashboard.tsx:343` - Must use `import.meta.env.VITE_SUPABASE_URL`
+2. **Hardcoded Intercom App IDs** in 3 locations - Must use `import.meta.env.VITE_INTERCOM_APP_ID`
+3. **SecurityTest component** in `src/App.tsx:51` - Must be removed from production builds
+4. **Missing environment validation** in `src/integrations/supabase/client.ts` - Must validate env vars exist
+5. **Missing security headers** - Must configure CSP, X-Frame-Options, HSTS in deployment config
+
+### Environment Variables Required
+```env
+# Critical (Required)
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
+
+# Integration (Required for features)
+VITE_INTERCOM_APP_ID=xu0gfiqb
+VITE_APP_URL=https://dobeu.net
+
+# Optional
+VITE_SENTRY_DSN=your-sentry-dsn
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+See `.env.example` for complete list and documentation.
+
+### Build Optimization
+Current bundle size: **877 KB** (exceeds 500 KB threshold)
+
+Optimizations needed:
+- Implement route-based code splitting (estimated -40% bundle size)
+- Configure manual vendor chunks in `vite.config.ts`
+- Use dynamic imports for routes with `React.lazy()`
+- See `vite.config.production.ts` for optimized production configuration
+
+### Deployment Configuration Files
+- `vercel.json` - Vercel deployment with security headers
+- `netlify.toml` - Netlify deployment with security headers
+- `public/_redirects` - SPA routing for static hosts
+
+### Pre-Deployment Checklist
+Reference `DEPLOYMENT_CHECKLIST_PRINTABLE.md` for comprehensive checklist.
+
+**Must complete before deploying to https://dobeu.net:**
+- [ ] Fix all 5 critical issues listed above
+- [ ] Create `.env.production` with production values
+- [ ] Configure Supabase production project with RLS policies
+- [ ] Set up DNS for dobeu.net
+- [ ] Verify SSL certificate
+- [ ] Test OAuth flows with production redirect URLs
+- [ ] Test PWA installation on iOS and Android
+
+## Known Issues and Technical Debt
+
+### Bundle Size
+- Main bundle: 877 KB (257 KB gzipped) - needs code splitting
+- No route-based lazy loading implemented
+- All vendor libraries bundled together
+
+### Security Considerations
+- 27 console.log statements in production code (should use logger utility)
+- No error boundary implemented at app level
+- Weak password policy (6 char minimum, no complexity requirements)
+- 7 npm vulnerabilities (1 high) - run `npm audit fix`
+
+### Performance Concerns
+- AdminDashboard component is 1,065 lines (consider refactoring)
+- No memoization in expensive filter operations
+- Missing loading skeleton states in some components
+
+### PWA Configuration
+- Only SVG icons provided (iOS requires PNG fallbacks)
+- Service worker cache version is static (should auto-increment)
+- Uses native `confirm()` for update prompts (should use custom UI)
+
+## Deployment Documentation
+Comprehensive deployment guides available:
+- `DEPLOYMENT_QUICK_START.md` - Fast deployment guide (30 minutes)
+- `PRODUCTION_DEPLOYMENT_GUIDE.md` - Complete reference
+- `SECURITY_CHECKLIST.md` - Security audit and requirements
+- `DEPLOYMENT_README.md` - Documentation index
+
+## Intercom Integration
+Intercom is integrated in multiple locations:
+- `src/components/IntercomManager.tsx` - Global Intercom initialization
+- `src/pages/Index.tsx` - Home page specific initialization (duplicate - should be removed)
+- Uses app ID: `xu0gfiqb` (move to environment variable)
+
+When working with Intercom:
+- Only keep initialization in IntercomManager (remove from Index.tsx)
+- Automatically identifies authenticated users
+- Conditionally loads based on environment
