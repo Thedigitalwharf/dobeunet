@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
+import { LiveRegionProvider } from "@/contexts/LiveRegionContext";
+import { SkipLink } from "@/components/SkipLink";
 import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { IntercomManager } from "@/components/IntercomManager";
 import { CookieConsent } from "@/components/CookieConsent";
@@ -25,6 +27,7 @@ function AppContent() {
 
   return (
     <>
+      <SkipLink />
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -57,7 +60,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <AuthProvider>
-          <AppContent />
+          <LiveRegionProvider>
+            <AppContent />
+          </LiveRegionProvider>
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
