@@ -1,1 +1,11 @@
+# Netlify Redirects File
+# https://docs.netlify.com/routing/redirects/
+
+# Redirect all routes to index.html for SPA routing
 /*    /index.html   200
+
+# Optional: Redirect www to non-www (or vice versa)
+# https://www.dobeu.net/*  https://dobeu.net/:splat  301!
+
+# Optional: Force HTTPS
+# http://dobeu.net/*  https://dobeu.net/:splat  301!
